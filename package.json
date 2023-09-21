@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "tsx ./index.ts"
+  },
   "dependencies": {
+    "@types/node": "^20.6.3",
+    "canvas": "^2.11.2",
+    "tsx": "^3.12.10",
     "typescript": "^5.2.2"
   }
 }
