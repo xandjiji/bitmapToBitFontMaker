@@ -12,8 +12,6 @@ const ctx = canvas.getContext("2d");
 
 ctx.drawImage(img, 0, 0);
 
-const allChars: number[][] = [];
-
 const BASE_ASCII_INDEX = 32;
 
 const data: any = {
