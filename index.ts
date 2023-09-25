@@ -25,6 +25,20 @@ const data: any = {
   basefont2: "",
 };
 
+const addToData = (key: number, bus: number[]) => {
+  const fallback: number[] = [];
+  for (let i = 0; i < DIMENSION; i++) {
+    fallback.push(0);
+  }
+  const mut: number[] = data[BASE_ASCII_INDEX + key] ?? fallback;
+
+  mut.forEach((value, index) => {
+    mut[index] += bus[index];
+  });
+
+  data[BASE_ASCII_INDEX + key] = mut;
+};
+
 const generateFilled = () => {
   let charCount = 0;
 
@@ -56,7 +70,8 @@ const generateFilled = () => {
         }
       }
 
-      data[BASE_ASCII_INDEX + charCount] = currentChar;
+      // data[BASE_ASCII_INDEX + charCount] = currentChar;
+      addToData(charCount, currentChar);
       charCount++;
     }
   }
@@ -115,13 +130,14 @@ const generateOutline = () => {
         }
       }
 
-      data[BASE_ASCII_INDEX + charCount] = currentChar;
+      // data[BASE_ASCII_INDEX + charCount] = currentChar;
+      addToData(charCount, currentChar);
       charCount++;
     }
   }
 };
 
 generateFilled();
-// generateOutline();
+generateOutline();
 
 console.log(JSON.stringify(data));
